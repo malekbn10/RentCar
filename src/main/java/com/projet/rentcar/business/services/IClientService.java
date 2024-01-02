@@ -4,8 +4,10 @@ package com.projet.rentcar.business.services;
 import java.util.List;
 import java.util.Optional;
 
-import com.projet.rentcar.dao.entities.Client;
+import org.springframework.stereotype.Service;
 
+import com.projet.rentcar.dao.entities.Client;
+@Service
 public interface IClientService {
     
     public Optional<Client> getClient(Long cin);

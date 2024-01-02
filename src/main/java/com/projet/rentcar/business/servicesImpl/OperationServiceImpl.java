@@ -5,12 +5,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.projet.rentcar.business.services.IOperationService;
 import com.projet.rentcar.dao.entities.Client;
 import com.projet.rentcar.dao.entities.Operation;
 import com.projet.rentcar.dao.repositories.OperationRepository;
-
+@Service
 public class OperationServiceImpl implements IOperationService {
     
     @Autowired
