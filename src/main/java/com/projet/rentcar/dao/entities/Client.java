@@ -3,6 +3,8 @@ package com.projet.rentcar.dao.entities;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,12 +13,14 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table(name="Client")
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class Client {
@@ -31,6 +35,7 @@ public class Client {
 
     @Column(name = "date_naissance")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date_naissance;
 
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="template :: html_head">
+
+<body>
+    <div th:replace="template :: navbar"></div>
+
+    <form th:action="@{/clients/save}" method="post" th:object="${client}">
+        <div class="form-row d-flex flex-column justify-content-between align-item-center">
+          <div class="form-group col-md-6 ">
+            <label for="inputEmail4">Full Name</label>
+            <input th:field="*{name}" type="text" class="form-control" name="name" id="inputEmail4" placeholder="Full Name">
+            <td th:if="${#fields.hasErrors('name')}">Name Error</td>
+
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">ID Card</label>
+            <input th:field="*{cin}" type="text" class="form-control" name="cin"  placeholder="ID Card">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputDate">Date of birth</label>
+            <input th:field="*{date_naissance}" type="date" name="date_naissance" class="form-control" >
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputState">Gender</label>
+            <select th:field="*{genre}" id="inputState" name="genre" class="form-control">
+              <option th:value="Male" th:text="Male">Male</option>
+              <option th:value="Femal" th:text="Female">Female</option>
+            </select>
+            <br>
+        <button type="submit" class="btn btn-danger">Save</button>
+
+        </div>            
+       
+          
+        
+      </form>
+</body>
+</html>

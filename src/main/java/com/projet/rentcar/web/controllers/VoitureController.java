@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.projet.rentcar.business.services.IVoitureService;
 import com.projet.rentcar.dao.entities.Voiture;
 
-@RestController
 @RequestMapping("/cars")
 public class VoitureController {
 
@@ -27,8 +26,8 @@ public class VoitureController {
     @GetMapping()
     public String getAllCars(Model model) {
         List<Voiture> listvoiture=voitureService.getAllVoiture();
-        model.addAttribute("listvoiture", listvoiture);
-        return "carlist";
+        model.addAttribute("listVoiture", listvoiture);
+        return "carlist.html";
     }
 /*
     // Retriving Cars By Marque

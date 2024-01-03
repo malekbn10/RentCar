@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html >
+<head th:replace="fragments :: html_head">
+<body>
+    <div th:replace="fragments :: navbar" ></div>
+    <!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    
+    <head th:replace="template :: html_head">
+    
+    <body>
+        <div th:replace="template :: navbar"></div>
+        <br>
+        <div class="container p-3 mb-2 bg-dark text-white">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <h5 class="card-title">Cars List </h5>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
+                        <div>
+                            <a th:href="@{/cars/new}" data-bs-toggle="modal" data-bs-target=".add-new" class="btn btn-danger"><i class="bx bx-plus me-1"></i> Add New Car</a>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="">
+                        <div class="table-responsive">
+                            <table class="table project-list-table table-striped align-middle table-borderless ">
+                                <thead >
+                                    <tr >
+                                        
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Brand</th>
+                                        <th scope="col">Price(/Day)</th>
+                                        <th scope="col" style="width: 200px;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr  th:each="car :${listVoiture}">
+                                        <td th:text="${car.Image}"></td>
+                                        
+                                        <td th:text="${car.marque}"><span class="badge badge-soft-success mb-0"></span></td>
+                                        <td th:text="${car.prixLoc}"></td>
+                                        <td>
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item">
+                                                   
+                                                    <a th:href="@{|/clients/update/${client.cin}|}" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary"><i class="bx bx-pencil font-size-18"></i></a>
+    
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a th:href="@{|/clients/delete/${client.cin}|}" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger"><i class="bx bx-trash-alt font-size-18"></i></a>
+    
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                    
+                                    
+                                 </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div th:if="${message}" class="alert alert-success text-center align-item-center">
+                [[${message}]]
+            </div>
+            <div class="row g-0 align-items-center pb-4">
+                <div class="col-sm-6">
+                    <div><p class="mb-sm-0">Showing 1 to 10 of 57 entries</p></div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="float-sm-end">
+                        <ul class="pagination mb-sm-0">
+                            <li class="page-item disabled">
+                                <a href="#" class="page-link"><i class="mdi mdi-chevron-left"></i></a>
+                            </li>
+                            <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                            <li class="page-item"><a href="#" class="page-link">2</a></li>
+                            <li class="page-item"><a href="#" class="page-link">3</a></li>
+                            <li class="page-item"><a href="#" class="page-link">4</a></li>
+                            <li class="page-item"><a href="#" class="page-link">5</a></li>
+                            <li class="page-item">
+                                <a href="#" class="page-link"><i class="mdi mdi-chevron-right"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!--
+         <ul th:each="client :${listClient}" class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-content-center align-items-center">
+                <div th:text="${client.name}" class="fw-bold"></div>
+                <div th:text="${client.genre}" class="fw-bold"></div>
+                <span th:text="${client.cin}" class="badge bg-primary rounded-pill"></span>
+                <a class="fw-bold">Edit</a>
+                <a class="fw-bold">Delete</a>
+    
+            </li>
+    
+        </ul>
+    -->
+    
+    
+       
+    </body>
+    
+    </html>
+</body>
+</html>

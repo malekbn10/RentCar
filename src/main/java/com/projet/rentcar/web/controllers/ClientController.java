@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.projet.rentcar.business.services.IClientService;
 import com.projet.rentcar.dao.entities.Client;
 
@@ -20,16 +22,13 @@ public class ClientController {
     @Autowired
     IClientService clientService;
 
-    @GetMapping("/home")
-    public String home() {
-        return "home";
-    }
+  
 
-    @GetMapping("/clientsList")
+    @GetMapping()
     public String getAllClient(Model model) {
         java.util.List<Client> listclient=clientService.getAllClient();        
         model.addAttribute("listClient", listclient);
-        return "listClient";
+        return "listClient.html";
     }
 
  
@@ -38,11 +37,12 @@ public class ClientController {
     @GetMapping("/new")
     public String showClientsFrom(Model model){
         model.addAttribute("client", new Client(null, null, null, null));
-        return "clientForm";
+        return "clientForm.html";
     }
     @PostMapping("/save")
-    public String addClient(Client client) {
+    public String addClient(Client client , RedirectAttributes ra) {
             clientService.addClient(client);
+            ra.addFlashAttribute("message", "The Client has been saved successfully");
         return "redirect:/clients";
     }
 
@@ -58,8 +58,8 @@ public class ClientController {
     }
 
     // Deleting a Client
-    @DeleteMapping("{cin}/delete")
-    public String deleteVoiture(@PathVariable("cin") Long cin) {
+    @GetMapping("/delete/{cin}")
+    public String deleteclient(@PathVariable("cin") Long cin) {
         clientService.deleteClient(cin);
         return "redirect:/clients";
     }
