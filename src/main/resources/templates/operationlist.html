@@ -8,16 +8,13 @@
             <div class="row align-items-center">
                 <div class="col-md-6">
                     <div class="mb-3">
-                        <h5 class="card-title">Cars List </h5>
+                        <h5 class="card-title">Operation List </h5>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
                         <div>
-                            <a th:href="@{/cars/new}" data-bs-toggle="modal" data-bs-target=".add-new" class="btn btn-danger"><i class="bx bx-plus me-1"></i> Add New Car</a>
-                            <div class="md-form active-pink active-pink-2 mb-3 mt-0">
-                                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                              </div>
+                            <a th:href="@{/operations/new}" data-bs-toggle="modal" data-bs-target=".add-new" class="btn btn-danger"><i class="bx bx-plus me-1"></i> Add New Operation</a>
                         </div>
                         
                     </div>
@@ -31,21 +28,32 @@
                             <table class="table project-list-table table-striped align-middle table-borderless ">
                                 <thead >
                                     <tr >
-                                        <th scope="col">Immatricule</th>
-                                        
-                                        <th scope="col">Availability</th>
-                                        <th scope="col">Brand</th>
-                                        <th scope="col">Price(/Day)</th>
-                                        <th scope="col" style="width: 200px;">Action</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Start Date</th>
+                                        <th scope="col">End Date</th>
+                                        <th scope="col">Guarantee</th>
+                                        <th scope="col">Guarantee Amount</th>
+                                        <th scope="col">Rent Fees</th>
+                                        <th scope="col">Client Name</th>
+                                        <th scope="col">Client Id</th>
+                                        <th scope="col">Car Id</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr  th:each="car :${listVoiture}">
-                                        <td th:text="${car.Immatricule}"><span class="badge badge-soft-success mb-0"></span></td>
-                                        <td th:text="${car.dispo}"><span class="badge badge-soft-success mb-0"></span></td>
+                                    <tr  th:each="op :${listoperation}">
+                                        <td th:text="${op.id}"><span class="badge badge-soft-success mb-0"></span></td>
+                                        <td th:text="${op.dateDebut}"><span class="badge badge-soft-success mb-0"></span></td>
+                                        <td th:text="${op.dateFin}"><span class="badge badge-soft-success mb-0"></span></td>
+
                                         
-                                        <td th:text="${car.marque}"><span class="badge badge-soft-success mb-0"></span></td>
-                                        <td th:text="${car.prixLoc}"></td>
+                                        <td th:text="${op.garantie}"><span class="badge badge-soft-success mb-0"></span></td>
+                                        <td th:text="${op.montantGarantie}"><span class="badge badge-soft-success mb-0"></span></td>
+
+                                        <td th:text="${op.fraisLoc}"></td>
+                                        <td th:text="${op.nomClient}"></td>
+                                        <td th:text="${op.cinClient}"></td>
+                                        <td th:text="${op.immVoiture}"></td>
+
                                         <td>
                                             <ul class="list-inline mb-0">
                                                 <li class="list-inline-item">
@@ -69,7 +77,13 @@
 
 
                                             </li>
-                                           
+                                            <li class="list-inline-item">
+                                                <a th:href="@{|/operations/new/${car.Immatricule}|}" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
+                                                        <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+                                                    </svg>
+                                                </a>
+                                            </li>
                                         </ul>
                                     </td>
 
@@ -119,21 +133,7 @@
     
     
     
-    
-    <!--
-         <ul th:each="client :${listClient}" class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-content-center align-items-center">
-                <div th:text="${client.name}" class="fw-bold"></div>
-                <div th:text="${client.genre}" class="fw-bold"></div>
-                <span th:text="${client.cin}" class="badge bg-primary rounded-pill"></span>
-                <a class="fw-bold">Edit</a>
-                <a class="fw-bold">Delete</a>
-    
-            </li>
-    
-        </ul>
-    -->
-    
+
     
        
 

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="template :: html_head">
+
+<body>
+    <div th:replace="template :: navbar"></div>
+
+    <form th:action="@{/operations/save}" method="post" th:object="${operation}">
+        <div class="form-row d-flex flex-column justify-content-between align-item-center">
+            <div class="form-group col-md-6 ">
+                <label for="inputEmail4" class="text-danger">Start Date</label>
+                <input th:field="*{dateDebut}" type="date" class="form-control" name="dateDebut" id="inputEmail4"
+                    placeholder="Start Date">
+                <td th:if="${#fields.hasErrors('dateDebut')}">Date Error</td>
+
+            </div>
+            <div class="form-group col-md-6 ">
+                <label for="inputEmail4" class="text-danger">End Date</label>
+                <input th:field="*{dateDebut}" type="date" class="form-control" name="dateDebut" id="inputEmail4"
+                    placeholder="Start Date">
+                <td th:if="${#fields.hasErrors('dateDebut')}">Date Error</td>
+
+            </div>
+
+            <div class="form-group col-md-6">
+
+                <label for="inputState" class="text-danger">Guarantee</label>
+                <select th:field="*{garantie}" id="inputState" name="garantie" class="form-select">
+                    <option th:value="Check" th:text="check">Lease</option>
+                    <option th:value="cash" th:text="cash">Rented</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-6 ">
+                <label for="inputEmail4" class="text-danger">Amount</label>
+                <input  th:field="*{montantGarantie}" type="text" class="form-control" name="montantGarantie"
+                    id="inputEmail4" placeholder="Amount">
+                <td th:if="${#fields.hasErrors('montantGarantie')}">Amount Error</td>
+
+            </div>
+            <input th:field="*{fraisLoc}" type="hidden" class="form-control" name="fraisLoc" id="inputEmail4"
+                    placeholder="Start Date">
+            <div class="form-group col-md-6">
+
+
+                <label for="inputState" class="text-danger">Car Immatricule</label>
+                <select th:field="*{immVoiture}" id="inputState" name="immVoiture" class="form-select">
+                    <tr th:each="car :${cars}">
+                        <option th:value="${car.Immatricule}" th:text="${car.Immatricule}">Lease</option>
+                    </tr>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputState" class="text-danger">Client Id</label>
+                <select th:field="*{cinClient}" id="inputState" name="cinClient" class="form-select">
+                    <tr th:each="client :${clients}">
+                        <option th:value="${client.cin}" th:text="${client.cin}">Lease</option>
+                    </tr>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputState" class="text-danger">Client name</label>
+                <select th:field="*{nomClient}" id="inputState" name="nomClient" class="form-select">
+                    <tr th:each="client :${clients}">
+                        <option th:value="${client.name}" th:text="${client.name}">Lease</option>
+                    </tr>
+                </select>
+            </div>
+            
+<br>
+            <div class="form-row d-flex flex-column justify-content-between ">
+                <div class="d-grid gap-1 col-2">
+
+                    <button type="submit" class="btn btn-danger btn-lg">Save</button>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</body>
+
+</html>

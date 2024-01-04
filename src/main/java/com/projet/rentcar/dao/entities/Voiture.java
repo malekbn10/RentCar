@@ -3,20 +3,25 @@ package com.projet.rentcar.dao.entities;
 
 import java.util.Date;
 
+import org.apache.tomcat.util.codec.binary.Base64;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
 @Entity
 @Table(name="Voitures")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 public class Voiture {
@@ -34,9 +39,11 @@ public class Voiture {
     private Date date_mise_circulation;
 
     @Column(name = "prixloc", length = 5, nullable = false,unique =false)
-    private Double prixLoc ;
+    private Long prixLoc ;
 
-    @Column(name = "image")
-    private String Image ;
+  
+    @Column(name = "dispo")
+    private String dispo ;
 
+   
 }
